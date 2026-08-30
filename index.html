@@ -5,92 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario Eventi per Famiglie</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; color: #333; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
-        p.subtitle { text-align: center; color: #7f8c8d; margin-top: 0; margin-bottom: 30px; }
-        .event-card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 6px solid #ccc; }
-        .event-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .event-date { background: #e9ecef; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: #495057; }
-        .event-association { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
-        .event-title { font-size: 1.25rem; font-weight: bold; color: #212529; margin: 5px 0 10px 0; }
-        .event-location { font-size: 0.95rem; color: #6c757d; margin-bottom: 10px; }
-        .event-description { font-size: 1rem; color: #4a5568; margin-bottom: 15px; line-height: 1.5; }
-        .event-link { display: inline-block; text-decoration: none; background-color: #007bff; color: white; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; }
-        .event-link:hover { background-color: #0056b3; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #3c4043; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        h1 { color: #1a73e8; margin-bottom: 5px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
+        p.subtitle { color: #5f6368; margin-top: 0; margin-bottom: 30px; font-size: 1rem; }
+        .calendar-list { display: flex; flex-direction: column; gap: 12px; }
+        .event-card { display: flex; background: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,7,12,0.05); transition: all 0.2s ease; }
+        .event-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .event-date-box { background: #f8f9fa; min-width: 110px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #dadce0; text-align: center; }
+        .event-day { font-size: 1.4rem; font-weight: bold; color: #202124; }
+        .event-month { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: #5f6368; }
+        .event-details { padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid #dadce0; }
+        .event-header-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .event-association { font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; }
+        .event-title { font-size: 1.15rem; font-weight: 600; color: #202124; margin-bottom: 6px; text-decoration: none; }
+        .event-title:hover { color: #1a73e8; text-decoration: underline; }
+        .event-location { font-size: 0.85rem; color: #5f6368; margin-bottom: 6px; }
+        .event-description { font-size: 0.95rem; color: #3c4043; line-height: 1.4; }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>📅 Calendario Eventi per Famiglie</h1>
-    <p class="subtitle">Genova, Cuneo e Valli Monregalesi</p>
+    <p class="subtitle">Genova, Cuneo e Valli Monregalesi — Gestito tramite eventi condivisi</p>
+    <div class="calendar-list">
 
-    <div class="event-card" style="border-left-color: #fd7e14;">
-        <div class="event-header">
-            <span class="event-date">📅 2026-09-11</span>
-            <span class="event-association" style="color: #fd7e14;">Illustrada (Mondovì)</span>
+        <div class="event-card">
+            <div class="event-date-box">
+                <span class="event-day">11</span>
+                <span class="event-month">SET</span>
+            </div>
+            <div class="event-details" style="border-left-color: #f29900;">
+                <div class="event-header-line">
+                    <span class="event-association" style="color: #f29900;">Illustrada (Mondovì)</span>
+                </div>
+                <a href="https://www.illustrada.it" target="_blank" class="event-title">Festival Illustrada - Apertura e Mostre</a>
+                <div class="event-location">📍 Mondovì Piazza</div>
+                <div class="event-description">Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi.</div>
+            </div>
         </div>
-        <div class="event-title">Festival Illustrada - Apertura e Mostre</div>
-        <div class="event-location">📍 Mondovì Piazza</div>
-        <div class="event-description">Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi.</div>
-        <a href="https://www.illustrada.it" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-    </div>
 
-    <div class="event-card" style="border-left-color: #17a2b8;">
-        <div class="event-header">
-            <span class="event-date">📅 2026-09-15</span>
-            <span class="event-association" style="color: #17a2b8;">Circolo Vega</span>
+        <div class="event-card">
+            <div class="event-date-box">
+                <span class="event-day">15</span>
+                <span class="event-month">SET</span>
+            </div>
+            <div class="event-details" style="border-left-color: #00acc1;">
+                <div class="event-header-line">
+                    <span class="event-association" style="color: #00acc1;">Circolo Vega</span>
+                </div>
+                <a href="https://www.genova.it" target="_blank" class="event-title">Laboratorio Creativo Vega - Alla scoperta dei pianeti</a>
+                <div class="event-location">📍 Genova</div>
+                <div class="event-description">Attività ludico-scientifica per bambini alla scoperta dello spazio.</div>
+            </div>
         </div>
-        <div class="event-title">Laboratorio Creativo Vega - Alla scoperta dei pianeti</div>
-        <div class="event-location">📍 Genova</div>
-        <div class="event-description">Attività ludico-scientifica per bambini alla scoperta dello spazio.</div>
-        <a href="https://www.genova.it" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-    </div>
 
-    <div class="event-card" style="border-left-color: #007bff;">
-        <div class="event-header">
-            <span class="event-date">📅 2026-09-19</span>
-            <span class="event-association" style="color: #007bff;">Biblioteca De Amicis</span>
+        <div class="event-card">
+            <div class="event-date-box">
+                <span class="event-day">19</span>
+                <span class="event-month">SET</span>
+            </div>
+            <div class="event-details" style="border-left-color: #1a73e8;">
+                <div class="event-header-line">
+                    <span class="event-association" style="color: #1a73e8;">Biblioteca De Amicis</span>
+                </div>
+                <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-title">Coccole e libri - Incontri Nati per Leggere (0-6 anni)</a>
+                <div class="event-location">📍 Genova - Porto Antico</div>
+                <div class="event-description">Incontri di lettura ad alta voce dedicati alle famiglie con bambini piccolissimi.</div>
+            </div>
         </div>
-        <div class="event-title">Coccole e libri - Incontri Nati per Leggere (0-6 anni)</div>
-        <div class="event-location">📍 Genova - Porto Antico</div>
-        <div class="event-description">Incontri di lettura ad alta voce dedicati alle famiglie con bambini piccolissimi.</div>
-        <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-    </div>
 
-    <div class="event-card" style="border-left-color: #28a745;">
-        <div class="event-header">
-            <span class="event-date">📅 2026-09-21</span>
-            <span class="event-association" style="color: #28a745;">Casa di Quartiere Certosa</span>
+        <div class="event-card">
+            <div class="event-date-box">
+                <span class="event-day">21</span>
+                <span class="event-month">SET</span>
+            </div>
+            <div class="event-details" style="border-left-color: #34a853;">
+                <div class="event-header-line">
+                    <span class="event-association" style="color: #34a853;">Casa di Quartiere Certosa</span>
+                </div>
+                <a href="https://www.colidolat.org/" target="_blank" class="event-title">Laboratorio musicale vocale 'La Tua Voce Racc@nta'</a>
+                <div class="event-location">📍 Genova - Certosa</div>
+                <div class="event-description">Laboratorio musicale vocale per bambini dai 6 ai 13 anni.</div>
+            </div>
         </div>
-        <div class="event-title">Laboratorio musicale vocale 'La Tua Voce Racc@nta'</div>
-        <div class="event-location">📍 Genova - Certosa</div>
-        <div class="event-description">Laboratorio musicale vocale per bambini dai 6 ai 13 anni.</div>
-        <a href="https://www.colidolat.org/" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-    </div>
 
-    <div class="event-card" style="border-left-color: #e83e8c;">
-        <div class="event-header">
-            <span class="event-date">📅 2026-09-22</span>
-            <span class="event-association" style="color: #e83e8c;">Officina del Crescere</span>
+        <div class="event-card">
+            <div class="event-date-box">
+                <span class="event-day">22</span>
+                <span class="event-month">SET</span>
+            </div>
+            <div class="event-details" style="border-left-color: #e52592;">
+                <div class="event-header-line">
+                    <span class="event-association" style="color: #e52592;">Officina del Crescere</span>
+                </div>
+                <a href="https://www.genova.it" target="_blank" class="event-title">Officina del Crescere - Spazio Famiglie</a>
+                <div class="event-location">📍 Genova</div>
+                <div class="event-description">Incontri di condivisione e laboratori espressivi per genitori e bambini.</div>
+            </div>
         </div>
-        <div class="event-title">Officina del Crescere - Spazio Famiglie</div>
-        <div class="event-location">📍 Genova</div>
-        <div class="event-description">Incontri di condivisione e laboratori espressivi per genitori e bambini.</div>
-        <a href="https://www.genova.it" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-    </div>
 
-    <div class="event-card" style="border-left-color: #d63384;">
-        <div class="event-header">
-            <span class="event-date">📅 2026-09-25</span>
-            <span class="event-association" style="color: #d63384;">Biblioteca Kora</span>
+        <div class="event-card">
+            <div class="event-date-box">
+                <span class="event-day">25</span>
+                <span class="event-month">SET</span>
+            </div>
+            <div class="event-details" style="border-left-color: #9334e6;">
+                <div class="event-header-line">
+                    <span class="event-association" style="color: #9334e6;">Biblioteca Kora</span>
+                </div>
+                <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-title">Pomeriggio di storie e fantasia alla Kora</a>
+                <div class="event-location">📍 Genova</div>
+                <div class="event-description">Letture animate e piccoli laboratori manuali per la prima infanzia.</div>
+            </div>
         </div>
-        <div class="event-title">Pomeriggio di storie e fantasia alla Kora</div>
-        <div class="event-location">📍 Genova</div>
-        <div class="event-description">Letture animate e piccoli laboratori manuali per la prima infanzia.</div>
-        <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-    </div>
 
+    </div>
 </div>
 </body>
 </html>
