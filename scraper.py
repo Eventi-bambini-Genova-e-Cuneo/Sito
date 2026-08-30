@@ -22,7 +22,7 @@ def generate_html_page(events):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario Eventi per Famiglie</title>
+    <title>Eventi per Famiglie</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #3c4043; margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -45,8 +45,8 @@ def generate_html_page(events):
 </head>
 <body>
 <div class="container">
-    <h1>📅 Calendario Eventi per Famiglie</h1>
-    <p class="subtitle">Genova, Cuneo e Valli Monregalesi — Gestito tramite eventi condivisi</p>
+    <h1>📅 Eventi per Famiglie</h1>
+    <p class="subtitle">Genova, Cuneo e Valli Monregalesi — Calendario Condiviso</p>
     <div class="calendar-list">
 """
 
@@ -62,19 +62,19 @@ def generate_html_page(events):
         
         # Mappatura colori in stile Google Calendar
         if 'illustrada' in assoc_lower:
-            color = '#f29900' # Arancione Google
+            color = '#f29900' 
         elif 'de amicis' in assoc_lower:
-            color = '#1a73e8' # Blu Google
+            color = '#1a73e8' 
         elif 'certosa' in assoc_lower:
-            color = '#34a853' # Verde Google
+            color = '#34a853' 
         elif 'officina' in assoc_lower:
-            color = '#e52592' # Rosa
+            color = '#e52592' 
         elif 'kora' in assoc_lower:
-            color = '#9334e6' # Viola
+            color = '#9334e6' 
         elif 'vega' in assoc_lower:
-            color = '#00acc1' # Cyan
+            color = '#00acc1' 
         else:
-            color = '#70757a' # Grigio scuro
+            color = '#70757a' 
 
         date_str = event.get('date', '')
         try:
@@ -114,7 +114,7 @@ def generate_html_page(events):
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
-    print("Pagina generata in stile Google Calendar!")
+    print("Pagina aggiornata con titolo 'Eventi per Famiglie'!")
 
 def run_pipeline():
     events = load_events_from_json()
