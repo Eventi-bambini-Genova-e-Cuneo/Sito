@@ -1,134 +1,73 @@
-<!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventi per Famiglie - Genova e Valli Monregalesi</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #3c4043; margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        h1 { color: #1a73e8; margin-bottom: 5px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }
-        p.subtitle { color: #5f6368; margin-top: 0; margin-bottom: 30px; font-size: 1rem; }
-        .calendar-list { display: flex; flex-direction: column; gap: 12px; }
-        .event-card { display: flex; background: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,7,12,0.05); transition: all 0.2s ease; }
-        .event-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .event-date-box { background: #f8f9fa; min-width: 110px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #dadce0; text-align: center; }
-        .event-day { font-size: 1.4rem; font-weight: bold; color: #202124; }
-        .event-month { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: #5f6368; }
-        .event-details { padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid #dadce0; }
-        .event-header-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-        .event-association { font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; }
-        .event-title { font-size: 1.15rem; font-weight: 600; color: #202124; margin-bottom: 6px; text-decoration: none; }
-        .event-title:hover { color: #1a73e8; text-decoration: underline; }
-        .event-location { font-size: 0.85rem; color: #5f6368; margin-bottom: 6px; }
-        .event-description { font-size: 0.95rem; color: #3c4043; line-height: 1.4; }
-        .event-link { display: inline-block; margin-top: 10px; text-decoration: none; background-color: #1a73e8; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; width: fit-content; }
-        .event-link:hover { background-color: #1557b0; }
-    </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    body {background-color: #eceff2}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.6px '.Apple Color Emoji UI'; color: #175ae2; -webkit-text-stroke: #175ae2; background-color: #ffffff}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.6px '.Apple Color Emoji UI'; color: #175ae2; -webkit-text-stroke: #175ae2; background-color: #ffffff; min-height: 26.0px}
+    span.s1 {font-kerning: none}
+  </style>
 </head>
 <body>
-<div class="container">
-    <h1>📅 Eventi per Famiglie</h1>
-    <p class="subtitle">Genova, Cuneo e Valli Monregalesi — Calendario Condiviso</p>
-    <div class="calendar-list">
-
-        <div class="event-card">
-            <div class="event-date-box">
-                <span class="event-day">11</span>
-                <span class="event-month">SET</span>
-            </div>
-            <div class="event-details" style="border-left-color: #f29900;">
-                <div class="event-header-line">
-                    <span class="event-association" style="color: #f29900;">Illustrada (Mondovì)</span>
-                </div>
-                <a href="https://www.illustrada.it" target="_blank" class="event-title">Festival Illustrada - Apertura e Mostre</a>
-                <div class="event-location">📍 Mondovì Piazza</div>
-                <div class="event-description">Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi.</div>
-                <a href="https://www.illustrada.it" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="event-date-box">
-                <span class="event-day">15</span>
-                <span class="event-month">SET</span>
-            </div>
-            <div class="event-details" style="border-left-color: #00acc1;">
-                <div class="event-header-line">
-                    <span class="event-association" style="color: #00acc1;">Circolo Vega</span>
-                </div>
-                <a href="https://www.genova.it" target="_blank" class="event-title">Laboratorio Creativo Vega - Alla scoperta dei pianeti</a>
-                <div class="event-location">📍 Genova</div>
-                <div class="event-description">Attività ludico-scientifica per bambini alla scoperta dello spazio.</div>
-                <a href="https://www.genova.it" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="event-date-box">
-                <span class="event-day">19</span>
-                <span class="event-month">SET</span>
-            </div>
-            <div class="event-details" style="border-left-color: #1a73e8;">
-                <div class="event-header-line">
-                    <span class="event-association" style="color: #1a73e8;">Biblioteca De Amicis</span>
-                </div>
-                <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-title">Coccole e libri - Incontri Nati per Leggere (0-6 anni)</a>
-                <div class="event-location">📍 Genova - Porto Antico</div>
-                <div class="event-description">Incontri di lettura ad alta voce dedicati alle famiglie con bambini piccolissimi.</div>
-                <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="event-date-box">
-                <span class="event-day">21</span>
-                <span class="event-month">SET</span>
-            </div>
-            <div class="event-details" style="border-left-color: #34a853;">
-                <div class="event-header-line">
-                    <span class="event-association" style="color: #34a853;">Casa di Quartiere Certosa</span>
-                </div>
-                <a href="https://www.colidolat.org/" target="_blank" class="event-title">Laboratorio musicale vocale 'La Tua Voce Racc@nta'</a>
-                <div class="event-location">📍 Genova - Certosa</div>
-                <div class="event-description">Laboratorio musicale vocale per bambini dai 6 ai 13 anni.</div>
-                <a href="https://www.colidolat.org/" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="event-date-box">
-                <span class="event-day">22</span>
-                <span class="event-month">SET</span>
-            </div>
-            <div class="event-details" style="border-left-color: #e52592;">
-                <div class="event-header-line">
-                    <span class="event-association" style="color: #e52592;">Officina del Crescere</span>
-                </div>
-                <a href="https://www.genova.it" target="_blank" class="event-title">Officina del Crescere - Spazio Famiglie</a>
-                <div class="event-location">📍 Genova</div>
-                <div class="event-description">Incontri di condivisione e laboratori espressivi per genitori e bambini.</div>
-                <a href="https://www.genova.it" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-            </div>
-        </div>
-
-        <div class="event-card">
-            <div class="event-date-box">
-                <span class="event-day">25</span>
-                <span class="event-month">SET</span>
-            </div>
-            <div class="event-details" style="border-left-color: #9334e6;">
-                <div class="event-header-line">
-                    <span class="event-association" style="color: #9334e6;">Biblioteca Kora</span>
-                </div>
-                <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-title">Pomeriggio di storie e fantasia alla Kora</a>
-                <div class="event-location">📍 Genova</div>
-                <div class="event-description">Letture animate e piccoli laboratori manuali per la prima infanzia.</div>
-                <a href="https://www.bibliotechedigenova.it/" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>
-            </div>
-        </div>
-
-    </div>
-</div>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="it"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Eventi per Famiglie - Genova e Valli Monregalesi&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #3c4043; margin: 0; padding: 20px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1 { color: #1a73e8; margin-bottom: 5px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>p.subtitle { color: #5f6368; margin-top: 0; margin-bottom: 30px; font-size: 1rem; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.calendar-list { display: flex; flex-direction: column; gap: 12px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-card { display: flex; background: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,7,12,0.05); transition: all 0.2s ease; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-date-box { background: #f8f9fa; min-width: 110px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #dadce0; text-align: center; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-day { font-size: 1.4rem; font-weight: bold; color: #202124; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-month { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: #5f6368; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-details { padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid #dadce0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-header-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-association { font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; color: #1a73e8; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-title { font-size: 1.15rem; font-weight: 600; color: #202124; margin-bottom: 6px; text-decoration: none; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-title:hover { color: #1a73e8; text-decoration: underline; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-location { font-size: 0.85rem; color: #5f6368; margin-bottom: 6px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-description { font-size: 0.95rem; color: #3c4043; line-height: 1.4; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-link { display: inline-block; margin-top: 10px; text-decoration: none; background-color: #1a73e8; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; width: fit-content; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-link:hover { background-color: #1557b0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;📅 Eventi per Famiglie&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="subtitle"&gt;Genova, Cuneo e Valli Monregalesi — Calendario Condiviso&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="calendar-list"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Esempio di scheda stile Google Calendar --&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="event-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="event-date-box"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="event-day"&gt;15&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="event-month"&gt;SET&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="event-details" style="border-left-color: #1a73e8;"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-header-line"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="event-association"&gt;Biblioteca De Amicis&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-title"&gt;Laboratorio di Lettura per Bambini&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-location"&gt;📍 Porto Antico, Genova&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-description"&gt;Un pomeriggio di racconti e storie animate per i più piccoli.&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" target="_blank" class="event-link"&gt;🌐 Visita il sito ufficiale&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
 </body>
 </html>
