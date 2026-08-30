@@ -1,124 +1,139 @@
 import os
+import requests
 from dotenv import load_dotenv
-from supabase import create_client, Client
 
 load_dotenv()
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-def scrape_de_amicis():
+def get_illustrada_events():
     return [
         {
-            "title": "Arteterapia: La scatola dei ricordi (De Amicis)",
-            "description": "Laboratorio di arteterapia per bambini dai 6 anni. Un'occasione per esplorare la creatività attraverso il riciclo di materiali e il racconto di storie.",
-            "location": "Biblioteca De Amicis, Porto Antico, Genova",
-            "date": "2026-09-05",
-            "category": "Biblioteca De Amicis"
+            "title": "Festival Illustrada - Inaugurazioni e Apertura Mostre",
+            "association": "Illustrada (Mondovì)",
+            "date": "2026-09-11",
+            "location": "Mondovì Piazza",
+            "description": "Inaugurazione delle mostre e serata Sketch & Drink.",
+            "url": "https://www.illustrada.it"
         },
         {
-            "title": "Coccole e libri - Nati per Leggere (0-3 anni)",
-            "description": "Incontro di lettura ad alta voce dedicato alle famiglie con bambini piccolissimi nella sezione dedicata della biblioteca.",
-            "location": "Biblioteca De Amicis, Porto Antico, Genova",
+            "title": "Festival Illustrada - Laboratori e Incontri (Giornata 1)",
+            "association": "Illustrada (Mondovì)",
+            "date": "2026-09-12",
+            "location": "Mondovì Piazza",
+            "description": "Laboratori di lettura e illustrazioni nel cuore del festival.",
+            "url": "https://www.illustrada.it"
+        },
+        {
+            "title": "Festival Illustrada - Laboratori e Incontri (Giornata 2)",
+            "association": "Illustrada (Mondovì)",
+            "date": "2026-09-13",
+            "location": "Mondovì Piazza",
+            "description": "Mostra mercato e laboratori artistici per famiglie nella giornata conclusiva.",
+            "url": "https://www.illustrada.it"
+        }
+    ]
+
+def get_vega_and_lilliput_events():
+    return [
+        {
+            "title": "Laboratorio Creativo Vega - Alla scoperta dei pianeti",
+            "association": "Vega",
             "date": "2026-09-15",
-            "category": "Biblioteca De Amicis"
+            "location": "Genova",
+            "description": "Attività ludico-scientifica per bambini alla scoperta dello spazio.",
+            "url": "https://www.genova.it"
         },
         {
-            "title": "Arteterapia: La fabbrica dei sogni (De Amicis)",
-            "description": "Laboratorio di arteterapia per bambini dai 6 anni focalizzato sull'uso dei colori e delle forme espressive.",
-            "location": "Biblioteca De Amicis, Porto Antico, Genova",
-            "date": "2026-09-12",
-            "category": "Biblioteca De Amicis"
-        },
-        {
-            "title": "Arteterapia: L'acchiappaparole (De Amicis)",
-            "description": "Laboratorio di arteterapia per bambini dai 6 anni per giocare con le parole e la narrazione visiva.",
-            "location": "Biblioteca De Amicis, Porto Antico, Genova",
-            "date": "2026-09-26",
-            "category": "Biblioteca De Amicis"
-        },
-        {
-            "title": "Festa dei Nonni e Laboratorio d'autunno (De Amicis)",
-            "description": "Speciale laboratorio pomeridiano pensato per bambini e nonni, con letture e attività manuali a tema autunnale.",
-            "location": "Biblioteca De Amicis, Porto Antico, Genova",
-            "date": "2026-10-02",
-            "category": "Biblioteca De Amicis"
+            "title": "Letture nel Parco con Lilliput",
+            "association": "Lilliput",
+            "date": "2026-09-18",
+            "location": "Genova - Parchi di Nervi",
+            "description": "Pomeriggio di letture ad alta voce all'aperto per piccolissimi.",
+            "url": "https://www.genova.it"
         }
     ]
 
-def scrape_varazze():
-    return [
-        {
-            "title": "Laboratorio creativo e letture sul mare (Varazze)",
-            "description": "Appuntamenti tra letture animate e laboratori creativi nella Sala Ragazzi della biblioteca civica.",
-            "location": "Biblioteca Civica E. Montale, Varazze",
-            "date": "2026-09-05",
-            "category": "Biblioteca Varazze"
-        },
-        {
-            "title": "Laboratorio creativo Sala Ragazzi (Varazze)",
-            "description": "Attività manuali e giochi di gruppo dedicati ai bambini della scuola primaria.",
-            "location": "Biblioteca Civica E. Montale, Varazze",
-            "date": "2026-09-12",
-            "category": "Biblioteca Varazze"
-        }
-    ]
+def generate_html_page(events):
+    html_content = """<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Eventi per Famiglie</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f8f9fa; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
+        p.subtitle { text-align: center; color: #7f8c8d; margin-top: 0; margin-bottom: 30px; }
+        .event-card { background: #fff; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 6px solid #ccc; }
+        .event-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .event-date { background: #e9ecef; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: #495057; }
+        .event-association { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; }
+        .event-title { font-size: 1.25rem; font-weight: bold; color: #212529; margin: 5px 0 10px 0; }
+        .event-location { font-size: 0.95rem; color: #6c757d; margin-bottom: 10px; }
+        .event-description { font-size: 1rem; color: #4a5568; margin-bottom: 15px; line-height: 1.5; }
+        .event-link { display: inline-block; text-decoration: none; background-color: #007bff; color: white; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; font-weight: 500; }
+        .event-link:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📅 Calendario Eventi per Famiglie</h1>
+    <p class="subtitle">Genova, Cuneo e Valli Monregalesi</p>
+"""
 
-def scrape_kora():
-    return [
-        {
-            "title": "Letture ad alta voce e attività creativa (Kora)",
-            "description": "Pomeriggio di storie e laboratori artistici per bambini all'interno degli spazi di Kora.",
-            "location": "Biblioteca Kora, Genova",
-            "date": "2026-09-16",
-            "category": "Biblioteca Kora"
-        }
-    ]
+    for event in sorted(events, key=lambda x: x['date']):
+        assoc = event.get('association', 'Altro')
+        assoc_lower = assoc.lower()
+        
+        # Assegnazione colori: Arancione per Illustrada, Blu per Vega, Verde per Lilliput
+        if 'illustrada' in assoc_lower:
+            color = '#fd7e14' 
+        elif 'vega' in assoc_lower:
+            color = '#007bff' 
+        elif 'lilliput' in assoc_lower:
+            color = '#28a745' 
+        else:
+            color = '#6f42c1' 
 
-def scrape_circolo_vega():
-    return [
-        {
-            "title": "Laboratorio ludico-creativo per famiglie (Circolo Vega)",
-            "description": "Attività espressive e giochi cooperativi organizzati dal Circolo Vega per stimolare la socialità e la fantasia dei più piccoli.",
-            "location": "Circolo Vega, Genova",
-            "date": "2026-09-19",
-            "category": "Circolo Vega"
-        }
-    ]
+        html_content += f"""
+    <div class="event-card" style="border-left-color: {color};">
+        <div class="event-header">
+            <span class="event-date">📅 {event.get('date', 'Da definire')}</span>
+            <span class="event-association" style="color: {color};">{assoc}</span>
+        </div>
+        <div class="event-title">{event.get('title', '')}</div>
+        <div class="event-location">📍 {event.get('location', '')}</div>
+        <div class="event-description">{event.get('description', '')}</div>
+        {f'<a href="{event.get("url")}" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>' if event.get('url') else ''}
+    </div>
+"""
 
-def scrape_lilliput():
-    return [
-        {
-            "title": "Alla scoperta dei musei con Lilliput (Lilliput Musei)",
-            "description": "Percorso interattivo e caccia al tesoro museale pensato per avvicinare i bambini all'arte e alla storia in modo divertente.",
-            "location": "Punti vari / Musei di Genova (Associazione Lilliput)",
-            "date": "2026-09-20",
-            "category": "Lilliput Musei"
-        }
-    ]
+    html_content += """
+</div>
+</body>
+</html>
+"""
+
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(html_content)
+    print("Pagina index.html generata con i colori corretti!")
 
 def run_pipeline():
-    print("=== Sincronizzazione completa (inclusi Vega e Lilliput) ===")
     all_events = []
-    
-    all_events.extend(scrape_de_amicis())
-    all_events.extend(scrape_varazze())
-    all_events.extend(scrape_kora())
-    all_events.extend(scrape_circolo_vega())
-    all_events.extend(scrape_lilliput())
-    
-    print(f"Totale eventi pronti per il caricamento: {len(all_events)}")
-    
-    for event in all_events:
-        try:
-            supabase.table("children_events").upsert(event, on_conflict="title,date").execute()
-            print(f"Caricato: {event['title']} ({event['date']})")
-        except Exception as e:
-            print(f"Errore caricamento '{event['title']}': {e}")
-            
-    print("\nTutti gli eventi sono stati sincronizzati con successo!")
+    try:
+        all_events.extend(get_illustrada_events())
+    except Exception:
+        pass
+    try:
+        all_events.extend(get_vega_and_lilliput_events())
+    except Exception:
+        pass
+
+    # Genera la pagina HTML colorata
+    generate_html_page(all_events)
 
 if __name__ == "__main__":
     run_pipeline()
