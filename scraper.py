@@ -1,12 +1,5 @@
 import os
 import json
-import requests
-from dotenv import load_dotenv
-
-load_dotenv()
-
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 def load_events_from_json():
     try:
@@ -22,7 +15,7 @@ def generate_html_page(events):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventi per Famiglie</title>
+    <title>Eventi per Famiglie - Genova e Valli Monregalesi</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #3c4043; margin: 0; padding: 20px; }
         .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -41,6 +34,8 @@ def generate_html_page(events):
         .event-title:hover { color: #1a73e8; text-decoration: underline; }
         .event-location { font-size: 0.85rem; color: #5f6368; margin-bottom: 6px; }
         .event-description { font-size: 0.95rem; color: #3c4043; line-height: 1.4; }
+        .event-link { display: inline-block; margin-top: 10px; text-decoration: none; background-color: #1a73e8; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; width: fit-content; }
+        .event-link:hover { background-color: #1557b0; }
     </style>
 </head>
 <body>
@@ -60,7 +55,7 @@ def generate_html_page(events):
         assoc = event.get('association', 'Altro')
         assoc_lower = assoc.lower()
         
-        # Mappatura colori in stile Google Calendar
+        # Mappatura colori definita e pulita
         if 'illustrada' in assoc_lower:
             color = '#f29900' 
         elif 'de amicis' in assoc_lower:
@@ -87,6 +82,7 @@ def generate_html_page(events):
         title = event.get('title', '')
         url = event.get('url', '')
         title_html = f'<a href="{url}" target="_blank" class="event-title">{title}</a>' if url else f'<div class="event-title">{title}</div>'
+        link_html = f'<a href="{url}" target="_blank" class="event-link">🌐 Visita il sito ufficiale</a>' if url else ''
 
         html_content += f"""
         <div class="event-card">
@@ -101,6 +97,7 @@ def generate_html_page(events):
                 {title_html}
                 <div class="event-location">📍 {event.get('location', '')}</div>
                 <div class="event-description">{event.get('description', '')}</div>
+                {link_html}
             </div>
         </div>
 """
@@ -114,11 +111,7 @@ def generate_html_page(events):
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
-    print("Pagina aggiornata con titolo 'Eventi per Famiglie'!")
-
-def run_pipeline():
-    events = load_events_from_json()
-    generate_html_page(events)
+    print("Pagina pulita e rigenerata con successo!")
 
 if __name__ == "__main__":
-    run_pipeline()
+    generate_html_page(load_events_from_json())
