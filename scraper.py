@@ -1,6 +1,6 @@
 import os
+import json
 import requests
-from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -8,57 +8,13 @@ load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
-def get_all_real_events():
-    return [
-        {
-            "title": "Festival Illustrada - Apertura e Mostre",
-            "association": "Illustrada (Mondovì)",
-            "date": "2026-09-11",
-            "location": "Mondovì Piazza",
-            "description": "Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi.",
-            "url": "https://www.illustrada.it"
-        },
-        {
-            "title": "Coccole e libri - Incontri Nati per Leggere (0-6 anni)",
-            "association": "Biblioteca De Amicis",
-            "date": "2026-09-19",
-            "location": "Genova - Porto Antico",
-            "description": "Incontri di lettura ad alta voce dedicati alle famiglie con bambini piccolissimi.",
-            "url": "https://www.bibliotechedigenova.it/"
-        },
-        {
-            "title": "Laboratorio musicale vocale 'La Tua Voce Racc@nta'",
-            "association": "Casa di Quartiere Certosa",
-            "date": "2026-09-21",
-            "location": "Genova - Certosa",
-            "description": "Laboratorio musicale vocale per bambini dai 6 ai 13 anni.",
-            "url": "https://www.colidolat.org/"
-        },
-        {
-            "title": "Laboratorio Creativo Vega - Alla scoperta dei pianeti",
-            "association": "Circolo Vega",
-            "date": "2026-09-15",
-            "location": "Genova",
-            "description": "Attività ludico-scientifica per bambini alla scoperta dello spazio.",
-            "url": "https://www.genova.it"
-        },
-        {
-            "title": "Officina del Crescere - Spazio Famiglie",
-            "association": "Officina del Crescere",
-            "date": "2026-09-22",
-            "location": "Genova",
-            "description": "Incontri di condivisione e laboratori espressivi per genitori e bambini.",
-            "url": "https://www.genova.it"
-        },
-        {
-            "title": "Pomeriggio di storie e fantasia alla Kora",
-            "association": "Biblioteca Kora",
-            "date": "2026-09-25",
-            "location": "Genova",
-            "description": "Letture animate e piccoli laboratori manuali per la prima infanzia.",
-            "url": "https://www.bibliotechedigenova.it/"
-        }
-    ]
+def load_events_from_json():
+    try:
+        with open("events.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Errore nella lettura del file events.json: {e}")
+        return []
 
 def generate_html_page(events):
     html_content = """<!DOCTYPE html>
@@ -89,25 +45,25 @@ def generate_html_page(events):
     <p class="subtitle">Genova, Cuneo e Valli Monregalesi</p>
 """
 
-    for event in sorted(events, key=lambda x: x['date']):
+    for event in sorted(events, key=lambda x: x.get('date', '')):
         assoc = event.get('association', 'Altro')
         assoc_lower = assoc.lower()
         
-        # Mappatura precisa dei colori per ogni realtà indicata
+        # Mappatura colori per associazione
         if 'illustrada' in assoc_lower:
-            color = '#fd7e14' # Arancione
+            color = '#fd7e14' 
         elif 'de amicis' in assoc_lower:
-            color = '#007bff' # Blu
+            color = '#007bff' 
         elif 'certosa' in assoc_lower:
-            color = '#28a745' # Verde
+            color = '#28a745' 
         elif 'officina' in assoc_lower:
-            color = '#e83e8c' # Rosa/Magenta
+            color = '#e83e8c' 
         elif 'kora' in assoc_lower:
-            color = '#d63384' # Rosso scuro / Magenta
+            color = '#d63384' 
         elif 'vega' in assoc_lower:
-            color = '#17a2b8' # Celeste
+            color = '#17a2b8' 
         else:
-            color = '#6f42c1' # Viola di riserva
+            color = '#6f42c1' 
 
         html_content += f"""
     <div class="event-card" style="border-left-color: {color};">
@@ -130,11 +86,11 @@ def generate_html_page(events):
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
-    print("File index.html generato con i colori distinti per ogni associazione!")
+    print("File index.html generato correttamente dal file JSON!")
 
 def run_pipeline():
-    events = get_all_real_events()
-    print(f"Elaborati {len(events)} eventi.")
+    events = load_events_from_json()
+    print(f"Caricati {len(events)} eventi da events.json.")
     
     if SUPABASE_URL and SUPABASE_KEY:
         headers = {

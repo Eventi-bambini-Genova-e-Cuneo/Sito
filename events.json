@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Festival Illustrada - Apertura e Mostre",
+    "association": "Illustrada (Mondovì)",
+    "date": "2026-09-11",
+    "location": "Mondovì Piazza",
+    "description": "Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi.",
+    "url": "https://www.illustrada.it"
+  },
+  {
+    "title": "Coccole e libri - Incontri Nati per Leggere (0-6 anni)",
+    "association": "Biblioteca De Amicis",
+    "date": "2026-09-19",
+    "location": "Genova - Porto Antico",
+    "description": "Incontri di lettura ad alta voce dedicati alle famiglie con bambini piccolissimi.",
+    "url": "https://www.bibliotechedigenova.it/"
+  },
+  {
+    "title": "Laboratorio musicale vocale 'La Tua Voce Racc@nta'",
+    "association": "Casa di Quartiere Certosa",
+    "date": "2026-09-21",
+    "location": "Genova - Certosa",
+    "description": "Laboratorio musicale vocale per bambini dai 6 ai 13 anni.",
+    "url": "https://www.colidolat.org/"
+  },
+  {
+    "title": "Laboratorio Creativo Vega - Alla scoperta dei pianeti",
+    "association": "Circolo Vega",
+    "date": "2026-09-15",
+    "location": "Genova",
+    "description": "Attività ludico-scientifica per bambini alla scoperta dello spazio.",
+    "url": "https://www.genova.it"
+  },
+  {
+    "title": "Officina del Crescere - Spazio Famiglie",
+    "association": "Officina del Crescere",
+    "date": "2026-09-22",
+    "location": "Genova",
+    "description": "Incontri di condivisione e laboratori espressivi per genitori e bambini.",
+    "url": "https://www.genova.it"
+  },
+  {
+    "title": "Pomeriggio di storie e fantasia alla Kora",
+    "association": "Biblioteca Kora",
+    "date": "2026-09-25",
+    "location": "Genova",
+    "description": "Letture animate e piccoli laboratori manuali per la prima infanzia.",
+    "url": "https://www.bibliotechedigenova.it/"
+  }
+]
