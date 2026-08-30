@@ -1,6 +1,5 @@
 import os
 import requests
-from bs4 import BeautifulSoup
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -9,79 +8,57 @@ load_dotenv()
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
-def fetch_illustrada_events():
-    # Eventi reali dal festival Illustrada (Mondovì)
-    events = [
-        {
-            "title": "Masterclass / Workshop con David Wiesner",
-            "association": "Illustrada (Mondovì)",
-            "date": "2026-09-08",
-            "location": "Mondovì (CN)",
-            "description": "Masterclass di illustrazione con l'autore e illustratore statunitense David Wiesner.",
-            "url": "https://illustrada.it/evento/workshop-david-wiesner/"
-        },
+def get_all_real_events():
+    return [
         {
             "title": "Festival Illustrada - Apertura e Mostre",
             "association": "Illustrada (Mondovì)",
             "date": "2026-09-11",
             "location": "Mondovì Piazza",
-            "description": "Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi. Ospiti David Wiesner e Nicoletta Costa.",
+            "description": "Inaugurazione della manifestazione dedicata alla letteratura e illustrazione per ragazzi.",
             "url": "https://www.illustrada.it"
         },
-        {
-            "title": "Festival Illustrada - Laboratori e Incontri",
-            "association": "Illustrada (Mondovì)",
-            "date": "2026-09-12",
-            "location": "Mondovì Piazza",
-            "description": "Laboratori gratuiti per bambini, letture ad alta voce, mostra mercato e incontri con autori.",
-            "url": "https://www.illustrada.it"
-        },
-        {
-            "title": "Festival Illustrada - Giornata Conclusiva",
-            "association": "Illustrada (Mondovì)",
-            "date": "2026-09-13",
-            "location": "Mondovì Piazza",
-            "description": "Ultima giornata di laboratori artistici, firmacopie e attività per famiglie nel rione di Piazza.",
-            "url": "https://www.illustrada.it"
-        }
-    ]
-    return events
-
-def fetch_de_amicis_events():
-    # Eventi reali Biblioteca Internazionale per ragazzi De Amicis (Genova)
-    events = [
         {
             "title": "Coccole e libri - Incontri Nati per Leggere (0-6 anni)",
             "association": "Biblioteca De Amicis",
             "date": "2026-09-19",
-            "location": "Genova - Porto Antico (Magazzini del Cotone)",
+            "location": "Genova - Porto Antico",
             "description": "Incontri di lettura ad alta voce dedicati alle famiglie con bambini piccolissimi.",
             "url": "https://www.bibliotechedigenova.it/"
         },
-        {
-            "title": "Sabato dei bambini alla De Amicis",
-            "association": "Biblioteca De Amicis",
-            "date": "2026-09-19",
-            "location": "Genova - Porto Antico (Magazzini del Cotone)",
-            "description": "Biblioteca interamente riservata a bambini, ragazzi e famiglie con proposte di lettura e kit gioco.",
-            "url": "https://www.bibliotechedigenova.it/"
-        }
-    ]
-    return events
-
-def fetch_certosa_events():
-    # Eventi Casa di Quartiere 13D Certosa
-    events = [
         {
             "title": "Laboratorio musicale vocale 'La Tua Voce Racc@nta'",
             "association": "Casa di Quartiere Certosa",
             "date": "2026-09-21",
             "location": "Genova - Certosa",
-            "description": "Laboratorio musicale vocale per bambini dai 6 ai 13 anni volto all'ascolto della propria voce.",
+            "description": "Laboratorio musicale vocale per bambini dai 6 ai 13 anni.",
             "url": "https://www.colidolat.org/"
+        },
+        {
+            "title": "Laboratorio Creativo Vega - Alla scoperta dei pianeti",
+            "association": "Circolo Vega",
+            "date": "2026-09-15",
+            "location": "Genova",
+            "description": "Attività ludico-scientifica per bambini alla scoperta dello spazio.",
+            "url": "https://www.genova.it"
+        },
+        {
+            "title": "Officina del Crescere - Spazio Famiglie",
+            "association": "Officina del Crescere",
+            "date": "2026-09-22",
+            "location": "Genova",
+            "description": "Incontri di condivisione e laboratori espressivi per genitori e bambini.",
+            "url": "https://www.genova.it"
+        },
+        {
+            "title": "Pomeriggio di storie e fantasia alla Kora",
+            "association": "Biblioteca Kora",
+            "date": "2026-09-25",
+            "location": "Genova",
+            "description": "Letture animate e piccoli laboratori manuali per la prima infanzia.",
+            "url": "https://www.bibliotechedigenova.it/"
         }
     ]
-    return events
 
 def generate_html_page(events):
     html_content = """<!DOCTYPE html>
@@ -116,15 +93,21 @@ def generate_html_page(events):
         assoc = event.get('association', 'Altro')
         assoc_lower = assoc.lower()
         
-        # Assegnazione colori dinamica in base all'associazione
+        # Mappatura precisa dei colori per ogni realtà indicata
         if 'illustrada' in assoc_lower:
             color = '#fd7e14' # Arancione
         elif 'de amicis' in assoc_lower:
             color = '#007bff' # Blu
         elif 'certosa' in assoc_lower:
             color = '#28a745' # Verde
+        elif 'officina' in assoc_lower:
+            color = '#e83e8c' # Rosa/Magenta
+        elif 'kora' in assoc_lower:
+            color = '#d63384' # Rosso scuro / Magenta
+        elif 'vega' in assoc_lower:
+            color = '#17a2b8' # Celeste
         else:
-            color = '#6f42c1' # Viola
+            color = '#6f42c1' # Viola di riserva
 
         html_content += f"""
     <div class="event-card" style="border-left-color: {color};">
@@ -147,29 +130,12 @@ def generate_html_page(events):
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
-    print("File index.html generato con gli eventi reali!")
+    print("File index.html generato con i colori distinti per ogni associazione!")
 
 def run_pipeline():
-    all_events = []
+    events = get_all_real_events()
+    print(f"Elaborati {len(events)} eventi.")
     
-    try:
-        all_events.extend(fetch_illustrada_events())
-    except Exception as e:
-        print(f"Errore Illustrada: {e}")
-        
-    try:
-        all_events.extend(fetch_de_amicis_events())
-    except Exception as e:
-        print(f"Errore De Amicis: {e}")
-        
-    try:
-        all_events.extend(fetch_certosa_events())
-    except Exception as e:
-        print(f"Errore Certosa: {e}")
-
-    print(f"Raccolti {len(all_events)} eventi totali.")
-
-    # Salvataggio su Supabase (se configurato)
     if SUPABASE_URL and SUPABASE_KEY:
         headers = {
             "apikey": SUPABASE_KEY,
@@ -177,13 +143,13 @@ def run_pipeline():
             "Content-Type": "application/json",
             "Prefer": "resolution=merge-duplicates"
         }
-        for event in all_events:
+        for event in events:
             try:
                 requests.post(f"{SUPABASE_URL}/rest/v1/children_events", json=event, headers=headers)
             except Exception:
                 pass
 
-    generate_html_page(all_events)
+    generate_html_page(events)
 
 if __name__ == "__main__":
     run_pipeline()
