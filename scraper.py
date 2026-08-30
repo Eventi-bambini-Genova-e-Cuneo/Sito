@@ -55,7 +55,7 @@ def generate_html_page(events):
         assoc = event.get('association', 'Altro')
         assoc_lower = assoc.lower()
         
-        # Mappatura colori definita e pulita
+        # Mappatura colori in stile Google Calendar
         if 'illustrada' in assoc_lower:
             color = '#f29900' 
         elif 'de amicis' in assoc_lower:
@@ -111,7 +111,7 @@ def generate_html_page(events):
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(html_content)
-    print("Pagina pulita e rigenerata con successo!")
+    print("Pagina in stile Google Calendar generata con successo!")
 
 if __name__ == "__main__":
     generate_html_page(load_events_from_json())
