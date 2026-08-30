@@ -1,73 +1,164 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #eceff2}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.6px '.Apple Color Emoji UI'; color: #175ae2; -webkit-text-stroke: #175ae2; background-color: #ffffff}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 21.6px '.Apple Color Emoji UI'; color: #175ae2; -webkit-text-stroke: #175ae2; background-color: #ffffff; min-height: 26.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi per Famiglie - Griglia Mensile</title>
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --border-color: #dadce0;
+            --text-main: #3c4043;
+            --text-secondary: #70757a;
+            --bg-light: #f8f9fa;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: var(--text-main); margin: 0; padding: 20px; }
+        .calendar-container { max-width: 1100px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
+        
+        .calendar-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border-color); background: #fff; }
+        .calendar-nav h1 { font-size: 1.5rem; color: #202124; margin: 0; display: flex; align-items: center; gap: 10px; }
+        .nav-buttons { display: flex; gap: 10px; }
+        .nav-btn { background: white; border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 500; color: var(--text-main); transition: background 0.2s; }
+        .nav-btn:hover { background: var(--bg-light); }
+
+        .weekdays { display: grid; grid-template-columns: repeat(7, 1fr); background: var(--bg-light); border-bottom: 1px solid var(--border-color); text-align: center; font-weight: 600; font-size: 0.8rem; color: var(--text-secondary); padding: 10px 0; letter-spacing: 0.5px; }
+        
+        .month-grid { display: grid; grid-template-columns: repeat(7, 1fr); grid-auto-rows: minmax(130px, auto); background: var(--border-color); gap: 1px; }
+        .day-cell { background: white; padding: 8px; display: flex; flex-direction: column; gap: 4px; overflow: hidden; position: relative; }
+        .day-cell.other-month { background: #fcfcfc; opacity: 0.5; }
+        
+        .day-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px; }
+        .day-number { font-size: 0.85rem; font-weight: 600; color: var(--text-main); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .day-cell.today .day-number { background: var(--primary-color); color: white; }
+        
+        .events-container { display: flex; flex-direction: column; gap: 3px; overflow-y: auto; max-height: 95px; }
+        .calendar-event { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; color: white; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; font-weight: 500; }
+        .calendar-event:hover { opacity: 0.85; }
+
+        .event-illustrada { background-color: #f29900; }
+        .event-de-amicis { background-color: #1a73e8; }
+        .event-certosa { background-color: #34a853; }
+        .event-officina { background-color: #e52592; }
+        .event-kora { background-color: #9334e6; }
+        .event-vega { background-color: #00acc1; }
+        .event-default { background-color: #70757a; }
+
+        .footer-info { text-align: center; padding: 15px; font-size: 0.85rem; color: var(--text-secondary); background: #fff; border-top: 1px solid var(--border-color); }
+    </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="it"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Eventi per Famiglie - Genova e Valli Monregalesi&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f0f2f5; color: #3c4043; margin: 0; padding: 20px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>h1 { color: #1a73e8; margin-bottom: 5px; font-size: 1.8rem; display: flex; align-items: center; gap: 10px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>p.subtitle { color: #5f6368; margin-top: 0; margin-bottom: 30px; font-size: 1rem; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.calendar-list { display: flex; flex-direction: column; gap: 12px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-card { display: flex; background: #fff; border: 1px solid #dadce0; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,7,12,0.05); transition: all 0.2s ease; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-card:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-date-box { background: #f8f9fa; min-width: 110px; padding: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #dadce0; text-align: center; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-day { font-size: 1.4rem; font-weight: bold; color: #202124; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-month { font-size: 0.85rem; text-transform: uppercase; font-weight: 600; color: #5f6368; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-details { padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; border-left: 6px solid #dadce0; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-header-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-association { font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px; color: #1a73e8; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-title { font-size: 1.15rem; font-weight: 600; color: #202124; margin-bottom: 6px; text-decoration: none; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-title:hover { color: #1a73e8; text-decoration: underline; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-location { font-size: 0.85rem; color: #5f6368; margin-bottom: 6px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-description { font-size: 0.95rem; color: #3c4043; line-height: 1.4; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-link { display: inline-block; margin-top: 10px; text-decoration: none; background-color: #1a73e8; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; width: fit-content; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.event-link:hover { background-color: #1557b0; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;div class="container"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;📅 Eventi per Famiglie&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="subtitle"&gt;Genova, Cuneo e Valli Monregalesi — Calendario Condiviso&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="calendar-list"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- Esempio di scheda stile Google Calendar --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="event-card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="event-date-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="event-day"&gt;15&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="event-month"&gt;SET&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="event-details" style="border-left-color: #1a73e8;"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-header-line"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="event-association"&gt;Biblioteca De Amicis&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-title"&gt;Laboratorio di Lettura per Bambini&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-location"&gt;📍 Porto Antico, Genova&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="event-description"&gt;Un pomeriggio di racconti e storie animate per i più piccoli.&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" target="_blank" class="event-link"&gt;🌐 Visita il sito ufficiale&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+<div class="calendar-container">
+    <div class="calendar-nav">
+        <h1 id="month-year-title">📅 Calendario Eventi</h1>
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="changeMonth(-1)">◀ Mese Prec.</button>
+            <button class="nav-btn" onclick="goToCurrentMonth()">Oggi</button>
+            <button class="nav-btn" onclick="changeMonth(1)">Mese Succ. ▶</button>
+        </div>
+    </div>
+    
+    <div class="weekdays">
+        <div>LUN</div><div>MAR</div><div>MER</div><div>GIO</div><div>VEN</div><div>SAB</div><div>DOM</div>
+    </div>
+
+    <div class="month-grid" id="calendar-grid"></div>
+    <div class="footer-info">Genova, Cuneo e Valli Monregalesi — Griglia Mensile Condivisa</div>
+</div>
+
+<script>
+    let currentYear = 2026;
+    let currentMonth = 7; // Agosto
+    let allEvents = [
+        {date: "2026-08-15", association: "Biblioteca De Amicis", title: "Laboratorio di Lettura", url: "#", location: "Porto Antico"},
+        {date: "2026-08-20", association: "Illustrada", title: "Incontro Illustrazione", url: "#", location: "Genova"},
+        {date: "2026-08-28", association: "Casa di Quartiere Certosa", title: "Festa di Quartiere", url: "#", location: "Certosa"}
+    ];
+
+    function renderCalendar() {
+        const grid = document.getElementById('calendar-grid');
+        grid.innerHTML = '';
+
+        const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+        document.getElementById('month-year-title').innerText = `📅 ${monthNames[currentMonth]} ${currentYear}`;
+
+        const firstDayIndex = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7; 
+        const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const prevTotalDays = new Date(currentYear, currentMonth, 0).getDate();
+
+        const today = new Date();
+        const isCurrentMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
+        const todayDate = today.getDate();
+
+        for (let i = firstDayIndex - 1; i >= 0; i--) {
+            const dayNum = prevTotalDays - i;
+            const cell = document.createElement('div');
+            cell.className = 'day-cell other-month';
+            cell.innerHTML = `<div class="day-header"><span class="day-number">${dayNum}</span></div>`;
+            grid.appendChild(cell);
+        }
+
+        for (let day = 1; day <= totalDays; day++) {
+            const cell = document.createElement('div');
+            cell.className = 'day-cell';
+            if (isCurrentMonth && day === todayDate) {
+                cell.classList.add('today');
+            }
+
+            const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+            let headerHtml = `<div class="day-header"><span class="day-number">${day}</span></div>`;
+            let eventsHtml = '<div class="events-container">';
+
+            const dayEvents = allEvents.filter(ev => ev.date === dateStr);
+            dayEvents.forEach(ev => {
+                const colorClass = getColorClass(ev.association);
+                eventsHtml += `<a href="${ev.url}" target="_blank" class="calendar-event ${colorClass}" title="${ev.association}: ${ev.title}">${ev.title}</a>`;
+            });
+            eventsHtml += '</div>';
+
+            cell.innerHTML = headerHtml + eventsHtml;
+            grid.appendChild(cell);
+        }
+
+        const totalCellsSoFar = firstDayIndex + totalDays;
+        const remainingCells = (7 - (totalCellsSoFar % 7)) % 7;
+        for (let i = 1; i <= remainingCells; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'day-cell other-month';
+            cell.innerHTML = `<div class="day-header"><span class="day-number">${i}</span></div>`;
+            grid.appendChild(cell);
+        }
+    }
+
+    function getColorClass(assoc) {
+        if (!assoc) return 'event-default';
+        const a = assoc.toLowerCase();
+        if (a.includes('illustrada')) return 'event-illustrada';
+        if (a.includes('de amicis')) return 'event-de-amicis';
+        if (a.includes('certosa')) return 'event-certosa';
+        if (a.includes('officina')) return 'event-officina';
+        if (a.includes('kora')) return 'event-kora';
+        if (a.includes('vega')) return 'event-vega';
+        return 'event-default';
+    }
+
+    function changeMonth(direction) {
+        currentMonth += direction;
+        if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+        else if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+        renderCalendar();
+    }
+
+    function goToCurrentMonth() {
+        const now = new Date();
+        currentYear = now.getFullYear();
+        currentMonth = now.getMonth();
+        renderCalendar();
+    }
+
+    renderCalendar();
+</script>
+
 </body>
 </html>
